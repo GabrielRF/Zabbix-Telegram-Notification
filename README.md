@@ -117,7 +117,7 @@ Then paste the code:
 
 import telebot,sys
 
-BOT_TOKEN='87459188:AAF3kKu6ob_6DPaQUckdC5LlnFROQmX7S8Y'
+BOT_TOKEN='158700146:AAHOPReqqTR8V7FXysa8mJCbQACUWSTBog8'
 DESTINATION=sys.argv[1]
 SUBJECT=sys.argv[2]
 MESSAGE=sys.argv[3]
