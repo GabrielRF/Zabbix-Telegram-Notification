@@ -83,6 +83,10 @@ When everything is done, the [@BotFather](http://telegram.me/BotFather) will dis
 
 In order to receive messages, the recipient user ___MUST___ send a message to the bot at least once.
 
+If a group will be used, add the bot on the group before testing.
+
+For channels, add the bot to the channel as an _administrator_.
+
 ## Configuration
 
 ### Bot configuration
@@ -106,7 +110,7 @@ Commands available on [@BotFather](http://telegram.me/BotFather):
 
 #### Python script
 
-Create a file named `telegram_notification.py` on the folder `/usr/src/bin/zabbixbot`:
+Create a file named `telegram_notification.py` on the folder `/usr/src/zabbixbot`:
 
 ```
 $ vi telegram_notification.py
@@ -139,7 +143,7 @@ find the line `AlertScriptsPath=`
 ```
 and include a new line
 ```
-AlertScriptsPath=/usr/src/bin/zabbixbot
+AlertScriptsPath=/usr/src/zabbixbot
 ```
 
 #### Media type
