@@ -52,11 +52,11 @@ To everything described here I'll use the following bot token:
 
 ### Dependencies
 
-The only thing you must have before following there instructions is a Zabbix Server running.
+The only thing you must have before following these instructions is a Zabbix Server running.
 
 ### Installation
 
-The only installation required is pyTelegramBotAPI.
+The only installation required is pyTelegramBotAPI. Choose one of the following methods:
 
 #### Using pip
 ```
@@ -69,7 +69,6 @@ $ git clone https://github.com/eternnoir/pyTelegramBotAPI.git
 $ cd pyTelegramBotAPI
 $ python setup.py install
 ```
-
 ### Creating a bot
 
 To create a bot, talk to [@BotFather](http://telegram.me/BotFather) on Telegram.
@@ -111,7 +110,6 @@ Commands available on [@BotFather](http://telegram.me/BotFather):
 #### Python script
 
 Create a file named `telegram_notification.py` on the folder `/usr/src/zabbixbot`:
-
 ```
 $ vi telegram_notification.py
 ```
@@ -131,19 +129,20 @@ MESSAGE = MESSAGE.replace('/n','\n')
 tb = telebot.TeleBot(BOT_TOKEN)
 tb.send_message(DESTINATION,SUBJECT + '\n' + MESSAGE)
 ```
-
 #### Zabbix_server.conf
 Go to file `/etc/zabbix/zabbix_server.conf`
 ```
 vi /etc/zabbix/server.conf
 ```
-find the line `AlertScriptsPath=`
-```
-/AlertScriptsPath
-```
-and include a new line
+find the line `AlertScriptsPath=`. And include:
 ```
 AlertScriptsPath=/usr/src/zabbixbot
+```
+_The easiest way to find is typing_ `/AlertScriptsPath=`.
+
+Restart Zabbix-server service.
+```
+service zabbix-server restart
 ```
 
 #### Media type
@@ -159,64 +158,11 @@ On the Zabbix interface, go to _Adminstration_, _Media types_, and click on _Cre
 Open Zabbix web interface, go to _Configuration_, _Actions_ and click on _Create Action_.
 
 - Name: `Telegram notification`
-- Subject: `{HOSTNAME}: {TRIGGER.NAME} Status: {TRIGGER.STATUS} Value: {ITEM.VALUE}`
+- Subject: `#{HOSTNAME}: {TRIGGER.NAME} {TRIGGER.STATUS}`
 - Message:
 ```
-notification = {
-  'hostname' : {HOSTNAME},
-  'ipaddress' : {IPADDRESS},
-  'trigger' : {
-    'id' : {TRIGGER.ID},
-    'name' : {TRIGGER.NAME},
-    'status' : {TRIGGER.STATUS},
-    'severity' : {TRIGGER.SEVERITY},
-    'nseverity' : {TRIGGER.NSEVERITY},
-    'expression' : {TRIGGER.EXPRESSION},
-    'url' : {TRIGGER.URL},
-  },
-  'item' : {
-    'id' : {
-      '1' : {ITEM.ID1},
-      '2' : {ITEM.ID2},
-      '3' : {ITEM.ID3},
-      '4' : {ITEM.ID4},
-      '5' : {ITEM.ID5},
-      '6' : {ITEM.ID6},
-      '7' : {ITEM.ID7},
-      '8' : {ITEM.ID8},
-      '9' : {ITEM.ID9},
-    },
-    'description' : {
-      '1' : {ITEM.DESCRIPTION1},
-      '2' : {ITEM.DESCRIPTION2},
-      '3' : {ITEM.DESCRIPTION3},
-      '4' : {ITEM.DESCRIPTION4},
-      '5' : {ITEM.DESCRIPTION5},
-      '6' : {ITEM.DESCRIPTION6},
-      '7' : {ITEM.DESCRIPTION7},
-      '8' : {ITEM.DESCRIPTION8},
-      '9' : {ITEM.DESCRIPTION9},
-    },
-    'key' : {
-      '1' : {ITEM.KEY1},
-      '2' : {ITEM.KEY2},
-      '3' : {ITEM.KEY3},
-      '4' : {ITEM.KEY4},
-      '5' : {ITEM.KEY5},
-      '6' : {ITEM.KEY6},
-      '7' : {ITEM.KEY7},
-      '8' : {ITEM.KEY8},
-      '9' : {ITEM.KEY9},
-    },
-    'value' : {ITEM.VALUE},
-  },
-  'event' : {
-    'id' : {EVENT.ID},
-    'date': {EVENT.DATE},
-    'time': {EVENT.TIME},
-    'age' : {EVENT.AGE},
-  }
-};
+Value: {ITEM.VALUE} {TRIGGER.STATUS}
+Date: {EVENT.DATE} Time: {EVENT.TIME}
 ```
 The fields _Subject_ and _Message_ are supposed to be customized as your needs.
 
@@ -244,7 +190,6 @@ Go to `https://api.telegram.org/bot158700146:AAHOPReqqTR8V7FXysa8mJCbQACUWSTBog8
 If you want to get a user id, send a message from this user to the bot. Reload the page and the user id will be shown.
 
 Example:
-
 ```
 "message":{"message_id":59,"from":{"id":9083329,"first_name":"Gabriel","last_name":"R F","username":"GabrielRF"},"chat":{"id":9083329,"first_name":"Gabriel","last_name":"R F","username":"GabrielRF","type":"private"},"date":1446911853,"text":"\/start"}}]}
 ```
@@ -253,7 +198,6 @@ In this case, the user id is `9083329`. So, on the step [Users](#users), the fie
 ### GroupID
 
 If you prefer to have your bot working on a group, then create the group and add the bot to it. Reload the page and you will see a message like:
-
 ```
 "message":{"message_id":60,"from":{"id":9083329,"first_name":"Gabriel","last_name":"R F","username":"GabrielRF"},"chat":{"id":-57169325,"title":"q31231","type":"group"},"date":1446912067,"group_chat_created":true}},{"update_id":727527785,
 ```
