@@ -22,6 +22,9 @@
   * [GroupID](#groupid)
   * [ChannelID](#channelid)
 * [More info](#more-info)
+  * [Inspiration](#inspiration)
+  * [pyTelegramBotAPI](#pytelegrambotapi)
+  * [Thanks](#thanks)
 
 ## Introduction
 
@@ -129,6 +132,11 @@ MESSAGE = MESSAGE.replace('/n','\n')
 tb = telebot.TeleBot(BOT_TOKEN)
 tb.send_message(DESTINATION,SUBJECT + '\n' + MESSAGE)
 ```
+Change the file permission and allow it to be executed
+```
+# chown -R zabbix: /usr/src/zabbixbot/
+# chmod +x telegram_notification.py
+```
 #### Zabbix_server.conf
 Go to file `/etc/zabbix/zabbix_server.conf`
 ```
@@ -136,7 +144,7 @@ vi /etc/zabbix/server.conf
 ```
 find the line `AlertScriptsPath=`. And include:
 ```
-AlertScriptsPath=/usr/src/zabbixbot
+AlertScriptsPath=/usr/src/zabbixbot/
 ```
 _The easiest way to find is typing_ `/AlertScriptsPath=`.
 
@@ -213,8 +221,12 @@ The last alternative is the easiest one. There's no need to get a channel id. Si
 
 ### Inspiration
 
-Mo@st of this method is based on a post from a Brazilian dev named Tobias. [Zabbix com notificações pelo Telegram (Portuguese only)](http://tobias.ws/blog/zabbix-com-notificacoes-pelo-telegram/)
+Most of this method is based on a post from a Brazilian dev named Tobias. [Zabbix com notificações pelo Telegram (Portuguese only)](http://tobias.ws/blog/zabbix-com-notificacoes-pelo-telegram/)
 
 ### pyTelegramBotAPI
 
 A simple, but extensible Python implementation for the Telegram Bot API. [eternoir/pyTelegramBotAPI](https://github.com/eternnoir/pyTelegramBotAPI)
+
+### Thanks
+
+Finally, I would like to thank João Paulo Nascimento, from Sergipe, who was the first person to test this method, helping me to find bugs.
