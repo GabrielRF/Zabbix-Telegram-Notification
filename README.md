@@ -229,4 +229,4 @@ A simple, but extensible Python implementation for the Telegram Bot API. [eterno
 
 ### Thanks
 
-Finally, I would like to thank João Paulo Nascimento, from Sergipe, who was the first person to test this method, helping me to find bugs.
+Finally, I would like to thank [João Paulo Nascimento](https://github.com/JoaoPNascimento), from Sergipe, who was the first person to test this method, helping me to find bugs.
