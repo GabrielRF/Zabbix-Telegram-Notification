@@ -65,6 +65,10 @@ The only installation required is pyTelegramBotAPI. Choose one of the following 
 ```
 $ pip install pyTelegramBotAPI
 ```
+It is also recommended to install security packages. To do this, run:
+```
+$ pip install pyopenssl ndg-httpsclient pyasn1
+```
 #### From source
 
 ```
