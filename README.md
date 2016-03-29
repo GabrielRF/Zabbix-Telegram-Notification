@@ -221,6 +221,8 @@ Note that a group id is always ___negative___. Only user's id are positive.
 
 The last alternative is the easiest one. There's no need to get a channel id. Simply set the `Send to` field on the step [Users](#users) to `@ChannelID`. The `@` symbol is ___obligatory___.
 
+__If this method doesn't work or if you want to get an id from a private channel, please, visit https://github.com/GabrielRF/telegram-id__
+
 ## More info
 
 ### Inspiration
