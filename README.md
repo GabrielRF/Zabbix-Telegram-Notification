@@ -165,6 +165,13 @@ On the Zabbix interface, go to _Adminstration_, _Media types_, and click on _Cre
 - Type: `Script`
 - Script name: `telegram_notification.py`
 
+##### If using Zabbix 3.0.1:
+
+ - Script Parameters
+  - {ALERT.SENDTO}
+  - {ALERT.SUBJECT}
+  - {ALERT.MESSAGE}
+
 #### Actions
 
 Open Zabbix web interface, go to _Configuration_, _Actions_ and click on _Create Action_.
