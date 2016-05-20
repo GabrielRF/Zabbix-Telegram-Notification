@@ -134,7 +134,7 @@ MESSAGE=sys.argv[3]
 MESSAGE = MESSAGE.replace('/n','\n')
 
 tb = telebot.TeleBot(BOT_TOKEN)
-tb.send_message(DESTINATION,SUBJECT + '\n' + MESSAGE)
+tb.send_message(DESTINATION,SUBJECT + '\n' + MESSAGE, disable_web_page_preview=True, parse_mode='HTML')
 ```
 Change the file permission and allow it to be executed
 ```
@@ -183,7 +183,14 @@ Open Zabbix web interface, go to _Configuration_, _Actions_ and click on _Create
 Value: {ITEM.VALUE} {TRIGGER.STATUS}
 Date: {EVENT.DATE} Time: {EVENT.TIME}
 ```
-The fields _Subject_ and _Message_ are supposed to be customized as your needs.
+The fields _Subject_ and _Message_ are supposed to be customized as your needs. HTML tags supported:
+```
+<b>bold</b>, <strong>bold</strong>
+<i>italic</i>, <em>italic</em>
+<a href="URL">inline URL</a>
+<code>inline fixed-width code</code>
+<pre>pre-formatted fixed-width code block</pre>
+```
 
 Go to tab _Conditions_ and add settings as your needs.
 
