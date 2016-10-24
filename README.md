@@ -69,6 +69,12 @@ It is also recommended to install security packages. To do this, run:
 ```
 $ pip install pyopenssl ndg-httpsclient pyasn1
 ```
+
+It may be necessary to update the `requests` package (tested with Ubuntu 14.04.4):
+```
+$ pip install -U requests
+```
+
 #### From source
 
 ```
