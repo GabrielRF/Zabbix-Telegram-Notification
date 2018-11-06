@@ -202,6 +202,24 @@ Go to tab _Conditions_ and add settings as your needs.
 
 Go to tab _Actions_ and add settings as your needs.
 
+##### If using Zabbix 4.0.0:
+
+- Action
+  - Name: Telegram
+  - Conditions
+    - Set as your needs
+- Operations
+  - Operations: Send to Users (set the same as in [Users](#users))
+  - Set message as your needs (Recommended [Actions](#actions))
+- Recovery operations
+  - Recovery Operations
+    - Set message as your needs (Recommended [Actions](#actions))
+    - Notify all involved 
+  - Update operations
+    - Set message as your needs (Recommended [Actions](#actions))
+    - Notify all involved
+
+
 #### Users
 
 The last step is to set who will receive the alerts.
